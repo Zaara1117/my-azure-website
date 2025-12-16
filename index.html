@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guess The Number Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        .game-box {
+            background: #1e293b;
+            padding: 30px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        
+        input {
+            padding: 8px;
+            width: 80%;
+            margin: 10px 0;
+        }
+        
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #38bdf8;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0ea5e9;
+        }
+        
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-box">
+        <h2>🎯 Guess The Number</h2>
+        <p>Guess a number between <b>1 and 10</b></p>
+
+        <input type="number" id="guess" placeholder="Enter your guess">
+        <button onclick="checkGuess()">Check</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 10) + 1;
+
+        function checkGuess() {
+            let userGuess = document.getElementById("guess").value;
+
+            if (userGuess == "") {
+                document.getElementById("result").innerText = "⚠️ Please enter a number!";
+                return;
+            }
+
+            if (userGuess == randomNumber) {
+                document.getElementById("result").innerText = "🎉 Correct! You won!";
+            } else if (userGuess > randomNumber) {
+                document.getElementById("result").innerText = "📈 Too high! Try again.";
+            } else {
+                document.getElementById("result").innerText = "📉 Too low! Try again.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
